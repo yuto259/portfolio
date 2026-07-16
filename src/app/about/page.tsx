@@ -34,14 +34,14 @@ export default function AboutPage() {
             <Info term="職種" description={profile.jobTitle} />
             <Info term="活動" description="AIを活用したゲーム題材の個人開発" />
             {profile.showStudioName ? <Info term="活動名" description={profile.studioName} /> : null}
-            <Info term="得意領域" description={profile.focusAreas.map((area) => area.title).join("、")} />
+            <Info term="経験領域" description={profile.focusAreas.map((area) => area.title).join("、")} />
           </dl>
         </div>
         <div className="grid gap-8">
           <ProfileSection title="自己紹介" paragraphs={[profile.shortBio]} />
           <ProfileSection title="職務要約" paragraphs={[profile.careerSummary]} />
           <ProfileSection title="エンジニアとして大切にしていること" list={profile.values} />
-          <FocusAreaSection title="得意な領域" areas={profile.focusAreas} />
+          <FocusAreaSection title="経験領域" areas={profile.focusAreas} />
           <ProfileSection title="AIを活用した開発" paragraphs={[profile.aiDevelopment]} />
           <ProfileSection title="個人開発を行う理由" paragraphs={[profile.whyBuildIndie]} />
           <ProfileSection title="今後取り組みたいこと" list={profile.futureGoals} />
