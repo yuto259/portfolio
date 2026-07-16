@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-labelledby="title desc">
+  <title id="title">Online board game placeholder</title>
+  <desc id="desc">Online board game prototype screen placeholder.</desc>
+  <rect width="1200" height="750" fill="#071014"/>
+  <rect x="72" y="72" width="1056" height="606" rx="32" fill="#101e24" stroke="#29454e" stroke-width="4"/>
+  <rect x="150" y="130" width="520" height="520" rx="22" fill="#0b161b"/>
+  <g stroke="#29454e" stroke-width="4">
+    <path d="M280 130v520M410 130v520M540 130v520M150 260h520M150 390h520M150 520h520"/>
+  </g>
+  <circle cx="280" cy="260" r="42" fill="#67d8b2"/>
+  <circle cx="410" cy="390" r="42" fill="#2fbf9f"/>
+  <circle cx="540" cy="520" r="42" fill="#67d8b2"/>
+  <circle cx="540" cy="260" r="42" fill="#35545d"/>
+  <rect x="730" y="160" width="300" height="56" rx="16" fill="#67d8b2"/>
+  <rect x="730" y="255" width="320" height="24" rx="12" fill="#35545d"/>
+  <rect x="730" y="310" width="270" height="24" rx="12" fill="#35545d"/>
+  <rect x="730" y="430" width="210" height="72" rx="18" fill="#14262d" stroke="#67d8b2" stroke-width="4"/>
+</svg>
