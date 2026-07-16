@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { SectionTitle } from "@/components/SectionTitle";
 import { getProfileName, profile } from "@/data/profile";
+import type { FocusArea } from "@/types/content";
 
 export const metadata: Metadata = {
   title: "About",
@@ -33,14 +34,14 @@ export default function AboutPage() {
             <Info term="職種" description={profile.jobTitle} />
             <Info term="活動" description="AIを活用したゲーム題材の個人開発" />
             {profile.showStudioName ? <Info term="活動名" description={profile.studioName} /> : null}
-            <Info term="関心領域" description={profile.focusAreas.join("、")} />
+            <Info term="得意領域" description={profile.focusAreas.map((area) => area.title).join("、")} />
           </dl>
         </div>
         <div className="grid gap-8">
           <ProfileSection title="自己紹介" paragraphs={[profile.shortBio]} />
           <ProfileSection title="職務要約" paragraphs={[profile.careerSummary]} />
           <ProfileSection title="エンジニアとして大切にしていること" list={profile.values} />
-          <ProfileSection title="得意な領域" list={profile.focusAreas} />
+          <FocusAreaSection title="得意な領域" areas={profile.focusAreas} />
           <ProfileSection title="AIを活用した開発" paragraphs={[profile.aiDevelopment]} />
           <ProfileSection title="個人開発を行う理由" paragraphs={[profile.whyBuildIndie]} />
           <ProfileSection title="今後取り組みたいこと" list={profile.futureGoals} />
@@ -56,6 +57,22 @@ function Info({ term, description }: { term: string; description: string }) {
       <dt className="font-semibold text-accent-300">{term}</dt>
       <dd className="mt-1 text-zinc-300">{description}</dd>
     </div>
+  );
+}
+
+function FocusAreaSection({ title, areas }: { title: string; areas: FocusArea[] }) {
+  return (
+    <section className="rounded-lg border border-white/10 bg-surface-850 p-6">
+      <h2 className="text-2xl font-bold text-white">{title}</h2>
+      <div className="mt-5 grid gap-4">
+        {areas.map((area) => (
+          <article key={area.title} className="rounded-md border border-white/10 bg-white/[0.03] p-4">
+            <h3 className="font-semibold text-accent-300">{area.title}</h3>
+            <p className="mt-2 leading-7 text-zinc-300">{area.description}</p>
+          </article>
+        ))}
+      </div>
+    </section>
   );
 }
 

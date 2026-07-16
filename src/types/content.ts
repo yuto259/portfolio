@@ -23,6 +23,11 @@ export type SkillCategory =
 
 export type SocialLinkKind = "GitHub" | "X" | "LinkedIn" | "Portfolio" | "Other";
 
+export type FocusArea = {
+  title: string;
+  description: string;
+};
+
 export type SiteConfig = {
   name: string;
   subtitle: string;
@@ -51,7 +56,7 @@ export type Profile = {
   profileImageAlt: string;
   strengths: string[];
   values: string[];
-  focusAreas: string[];
+  focusAreas: FocusArea[];
   whyBuildIndie: string;
   futureGoals: string[];
 };
