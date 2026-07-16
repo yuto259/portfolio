@@ -7,7 +7,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.baseUrl),
   title: {
-    default: siteConfig.name,
+    default: siteConfig.metaTitle,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: siteConfig.name,
+    title: siteConfig.metaTitle,
     description: siteConfig.description,
     url: siteConfig.baseUrl,
     siteName: siteConfig.name,
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: siteConfig.name,
+    title: siteConfig.metaTitle,
     description: siteConfig.description,
     images: [siteConfig.ogImage],
   },
@@ -39,10 +39,23 @@ export const viewport: Viewport = {
   colorScheme: "dark",
 };
 
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Yuto",
+  jobTitle: "システムエンジニア / バックエンドエンジニア",
+  url: siteConfig.baseUrl,
+  sameAs: ["https://github.com/yuto259"],
+};
+
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="ja">
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
         <a className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-accent-400 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-surface-950" href="#main-content">
           本文へ移動
         </a>

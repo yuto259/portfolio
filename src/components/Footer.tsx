@@ -30,7 +30,7 @@ export function Footer() {
               </ExternalLink>
             ))}
           </div>
-          <p className="text-zinc-500">© {new Date().getFullYear()} {getProfileName()}</p>
+          <p className="text-zinc-400">© {new Date().getFullYear()} {getProfileName()}</p>
         </div>
       </div>
     </footer>

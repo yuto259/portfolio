@@ -4,7 +4,7 @@ export const experiences: Experience[] = [
   {
     id: "economic-platform-maintenance",
     role: "経済情報プラットフォームの保守・改修",
-    period: "2025年12月〜2026年7月",
+    period: "2025年12月〜現在",
     overview:
       "経済情報を扱うWebサービスの保守・改修案件にて、企業情報管理機能のREST API設計・実装を担当しました。要件に基づく機能追加、既存機能の改修、不具合の原因分析から修正・テスト・リリースまで一貫して対応しています。",
     phases: ["調査", "設計", "実装", "テスト", "リリース", "保守"],
@@ -20,7 +20,6 @@ export const experiences: Experience[] = [
     improvements: [
       "定型的な運用作業を効率化するシェルスクリプトを作成",
       "エラーデータの抽出から報告までの作業を効率化",
-      "目的、条件、既存仕様をAIへ共有し、出力をレビューしながら開発に活用",
     ],
     results: [],
     teamRole: "4〜5名規模のアジャイル開発チームで、バックエンド開発、保守・改修を担当",
@@ -30,10 +29,10 @@ export const experiences: Experience[] = [
     role: "ERP基幹システムの保守・運用",
     period: "2025年4月〜2025年11月",
     overview:
-      "ERP基幹システムの刷新案件にて、既存システムの調査や保守・運用業務を担当しました。業務影響を考慮しながら既存仕様を確認し、必要な対応を進める経験を積みました。",
+      "ERP基幹システムの刷新案件にて、既存システムの調査と、ジョブの監視・運用業務を担当しました。業務影響を考慮しながら既存仕様を確認し、必要な対応を進める経験を積みました。",
     phases: ["調査", "分析", "保守", "運用"],
     technologies: [],
-    responsibilities: ["既存システムの調査", "保守・運用業務", "業務影響を考慮した既存仕様の確認"],
+    responsibilities: ["既存システムの調査", "ジョブの監視・運用業務", "業務影響を考慮した既存仕様の確認"],
     improvements: ["既存仕様を確認しながら、必要な対応範囲を整理"],
     results: [],
     teamRole: "保守・運用担当として、既存機能の調査と対応を担当",
@@ -70,7 +69,7 @@ export const experiences: Experience[] = [
     period: "2022年1月〜2022年9月",
     overview:
       "キャリア初期に、HTML、CSS、JavaScriptを用いたWebサイト制作や、WordPressを用いたサイト構築に携わりました。現在の主軸は業務系システム開発ですが、画面表示や利用者視点を意識した開発の基礎として経験しています。",
-    phases: ["マークアップ", "Webサイト制作", "WordPress構築", "表示確認", "修正"],
+    phases: ["マークアップ", "画面実装", "WordPress構築", "表示確認", "修正"],
     technologies: ["HTML", "CSS", "JavaScript", "WordPress"],
     responsibilities: [
       "HTML、CSSを用いたWebページのマークアップ",

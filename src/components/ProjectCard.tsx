@@ -23,13 +23,13 @@ export function ProjectCard({ project }: { project: Project }) {
         </div>
         <h3 className="mt-4 text-xl font-bold text-white">{project.title}</h3>
         <p className="mt-3 flex-1 leading-7 text-zinc-300">{project.summary}</p>
-        <div className="mt-5 flex flex-wrap gap-2" aria-label={`${project.title}の使用技術`}>
+        <ul className="mt-5 flex flex-wrap gap-2">
           {project.techStack.slice(0, 4).map((tech) => (
-            <span key={tech} className="rounded-md bg-white/[0.06] px-2.5 py-1 text-xs text-zinc-200">
+            <li key={tech} className="rounded-md bg-white/[0.06] px-2.5 py-1 text-xs text-zinc-200">
               {tech}
-            </span>
+            </li>
           ))}
-        </div>
+        </ul>
         <p className="mt-4 text-sm leading-6 text-zinc-400">
           担当範囲: {project.responsibilities.slice(0, 3).join("、")}
         </p>

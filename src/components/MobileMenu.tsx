@@ -39,9 +39,16 @@ export function MobileMenu() {
         </span>
       </button>
       {isOpen ? (
-        <div id={menuId} className="absolute left-4 right-4 top-20 rounded-lg border border-white/10 bg-surface-900 p-3 shadow-glow">
-          <Navigation orientation="vertical" onNavigate={() => setIsOpen(false)} />
-        </div>
+        <>
+          <div
+            aria-hidden="true"
+            className="fixed inset-0 z-40 bg-black/40"
+            onClick={() => setIsOpen(false)}
+          />
+          <div id={menuId} className="absolute left-4 right-4 top-20 z-50 rounded-lg border border-white/10 bg-surface-900 p-3 shadow-glow">
+            <Navigation orientation="vertical" onNavigate={() => setIsOpen(false)} />
+          </div>
+        </>
       ) : null}
     </div>
   );

@@ -18,7 +18,7 @@ export default function AboutPage() {
       <SectionTitle
         label="About"
         title={`${name}について`}
-        description="顧客名、客先名、内部システム名などの機密情報を含まない、公開用プロフィールです。"
+        description="システムエンジニアとしての経歴、大切にしていること、AIを活用した開発への取り組みを紹介します。"
       />
       <section className="mt-10 grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
         <div className="rounded-lg border border-white/10 bg-surface-850 p-6">

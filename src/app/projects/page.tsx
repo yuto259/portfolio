@@ -39,15 +39,17 @@ export default async function ProjectsPage({ searchParams }: ProjectsPageProps) 
         title="個人開発作品"
         description="AIを活用した開発手法を実践するための個人開発作品です。公開できるGitHubリンクがあるものだけ掲載しています。"
       />
-      <div className="mt-8 grid gap-4 rounded-lg border border-white/10 bg-surface-850 p-4">
-        <FilterGroup title="種類" items={kinds} queryKey="kind" activeValue={kind} />
-        <FilterGroup title="開発状況" items={statuses} queryKey="status" activeValue={status} />
-        {(kind || status) ? (
-          <Link className="w-fit text-sm font-semibold text-accent-300 transition hover:text-accent-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-300" href="/projects">
-            フィルターを解除
-          </Link>
-        ) : null}
-      </div>
+      {projects.length > 1 ? (
+        <div className="mt-8 grid gap-4 rounded-lg border border-white/10 bg-surface-850 p-4">
+          <FilterGroup title="種類" items={kinds} queryKey="kind" activeValue={kind} />
+          <FilterGroup title="開発状況" items={statuses} queryKey="status" activeValue={status} />
+          {(kind || status) ? (
+            <Link className="w-fit text-sm font-semibold text-accent-300 transition hover:text-accent-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-300" href="/projects">
+              フィルターを解除
+            </Link>
+          ) : null}
+        </div>
+      ) : null}
       <div className="mt-8 grid gap-6 md:grid-cols-2">
         {filteredProjects.map((project) => (
           <ProjectCard key={project.slug} project={project} />

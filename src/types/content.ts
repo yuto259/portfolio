@@ -2,13 +2,7 @@ export type ProjectStatus = "Released" | "In Development" | "Prototype" | "Archi
 
 export type ProjectKind = "Game" | "Web App" | "Tool";
 
-export type ExperienceLevel =
-  | "実務経験あり"
-  | "実務で利用経験"
-  | "個人開発で使用"
-  | "業務活用"
-  | "経験あり"
-  | "学習・利用経験あり";
+export type ExperienceLevel = "実務経験あり" | "実務で利用" | "個人開発で使用";
 
 export type SkillCategory =
   | "Backend"
@@ -30,6 +24,7 @@ export type FocusArea = {
 
 export type SiteConfig = {
   name: string;
+  metaTitle: string;
   subtitle: string;
   description: string;
   baseUrl: string;
