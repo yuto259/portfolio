@@ -19,8 +19,8 @@ export const profile: Profile = {
     "2022年にWebサイト制作からキャリアを始め、HTML、CSS、JavaScript、WordPressを用いたサイト制作を経験しました。2023年からはC#とSQLを用いた業務システム開発へ移り、見積作成システムの更改、業務システムのC#マイグレーション、ERP基幹システムの保守・運用を担当しました。2025年12月からは、経済情報プラットフォームの保守・改修案件にて、KotlinとSpring Bootを用いたREST APIの設計・実装、既存機能の改修、不具合の原因分析、テスト、リリース対応を担当しています。工程としては、調査・分析、基本設計の補助、詳細設計、実装、単体テスト、結合テスト、リリース、保守・運用まで幅広く経験してきました。",
   aiDevelopment:
     "業務および個人開発では、Claude CodeやCodexなどのAIコーディングエージェントを活用しています。設計内容、関連コード、既存仕様、エラー内容などのコンテキストを共有し、目的と条件を明確にしたうえで、調査、実装、レビュー、リファクタリングを依頼しています。AIの出力は必ず自分で確認し、仕様との整合性、コードの責務、テスト結果をレビューしています。",
-  profileImage: "/images/profile/profile-placeholder.svg",
-  profileImageAlt: "Yutoのプロフィール用プレースホルダー画像",
+  profileImage: "/images/profile/yuto-profile.png",
+  profileImageAlt: "Yuのロゴを使用したYutoのプロフィール画像",
   strengths: [
     "既存システムや既存コードの調査、仕様と実装の対応関係の整理",
     "不具合の再現、原因の切り分け、修正、テスト、リリース対応",
