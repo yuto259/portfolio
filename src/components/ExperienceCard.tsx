@@ -12,8 +12,22 @@ export function ExperienceCard({ experience }: { experience: Experience }) {
           {experience.period}
         </p>
       </div>
+      <div className="mt-6">
+        <h3 className="text-sm font-semibold text-accent-300">担当工程</h3>
+        <ol className="mt-3 flex flex-wrap items-center gap-y-2">
+          {experience.phases.map((phase, index) => (
+            <li key={phase} className="flex items-center">
+              <span className="rounded-md border border-white/10 bg-white/[0.04] px-2.5 py-1 text-xs text-zinc-200">
+                {phase}
+              </span>
+              {index < experience.phases.length - 1 ? (
+                <span aria-hidden="true" className="mx-1.5 text-zinc-500">→</span>
+              ) : null}
+            </li>
+          ))}
+        </ol>
+      </div>
       <div className="mt-6 grid gap-5 lg:grid-cols-2">
-        <InfoBlock title="担当工程" items={experience.phases} />
         <InfoBlock title="使用技術" items={experience.technologies} />
         <InfoBlock title="担当したこと" items={experience.responsibilities} />
         <InfoBlock title="工夫したこと" items={experience.improvements} />

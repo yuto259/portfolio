@@ -4,7 +4,7 @@ export const experiences: Experience[] = [
   {
     id: "economic-platform-maintenance",
     role: "経済情報プラットフォームの保守・改修",
-    period: "2025年12月〜現在",
+    period: "2025年12月〜2026年7月",
     overview:
       "経済情報を扱うWebサービスの保守・改修案件にて、企業情報管理機能のREST API設計・実装を担当しました。要件に基づく機能追加、既存機能の改修、不具合の原因分析から修正・テスト・リリースまで一貫して対応しています。",
     phases: ["調査", "設計", "実装", "テスト", "リリース", "保守"],

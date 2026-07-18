@@ -2,18 +2,7 @@ export type ProjectStatus = "Released" | "In Development" | "Prototype" | "Archi
 
 export type ProjectKind = "Game" | "Web App" | "Tool";
 
-export type ExperienceLevel = "実務経験あり" | "実務で利用" | "個人開発で使用";
-
-export type SkillCategory =
-  | "Backend"
-  | "Frontend"
-  | "Database"
-  | "Infrastructure"
-  | "Tools"
-  | "Testing"
-  | "Game Development"
-  | "AI Development"
-  | "Development Process";
+export type SkillGroup = "work-main" | "work-used" | "personal";
 
 export type SocialLinkKind = "GitHub" | "X" | "LinkedIn" | "Portfolio" | "Other";
 
@@ -49,7 +38,6 @@ export type Profile = {
   aiDevelopment: string;
   profileImage: string;
   profileImageAlt: string;
-  strengths: string[];
   values: string[];
   focusAreas: FocusArea[];
   whyBuildIndie: string;
@@ -67,9 +55,9 @@ export type Project = {
   title: string;
   kind: ProjectKind;
   status: ProjectStatus;
-  thumbnail: string;
-  mainImage: string;
-  imageAlt: string;
+  thumbnail?: string;
+  mainImage?: string;
+  imageAlt?: string;
   summary: string;
   overview: string;
   purpose: string;
@@ -77,11 +65,8 @@ export type Project = {
   responsibilities: string[];
   techStack: string[];
   developmentPeriod: string;
-  designPolicy: string[];
-  implementationNotes: string[];
-  challenges: string[];
-  solutions: string[];
-  quality: string[];
+  engineering: string[];
+  aiUsage: string[];
   futurePlans: string[];
   links: {
     github?: ProjectLink;
@@ -106,9 +91,14 @@ export type Experience = {
 
 export type Skill = {
   name: string;
-  category: SkillCategory;
-  levels: ExperienceLevel[];
+  group: SkillGroup;
   usage: string;
+};
+
+export type AiSkill = {
+  title: string;
+  description: string;
+  tools: string[];
 };
 
 export type SocialLink = {

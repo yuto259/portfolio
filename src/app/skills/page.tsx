@@ -1,26 +1,21 @@
 import type { Metadata } from "next";
 import { SectionTitle } from "@/components/SectionTitle";
-import { SkillCard } from "@/components/SkillCard";
-import { skills } from "@/data/skills";
-import type { SkillCategory } from "@/types/content";
+import { aiSkill, skillGroupLabels, skills } from "@/data/skills";
+import type { SkillGroup } from "@/types/content";
 
 export const metadata: Metadata = {
   title: "Skills",
-  description: "Backend、Frontend、Database、Infrastructure、Tools、Testing、Game Developmentのスキル一覧です。",
+  description: "Yutoの技術スキル一覧です。主な実務経験、実務で利用経験のある技術、個人開発で使用している技術に分けて掲載しています。",
   alternates: { canonical: "/skills" },
 };
 
-const categories: SkillCategory[] = [
-  "Backend",
-  "Frontend",
-  "Database",
-  "Infrastructure",
-  "Tools",
-  "Testing",
-  "Game Development",
-  "AI Development",
-  "Development Process",
-];
+const groups: SkillGroup[] = ["work-main", "work-used", "personal"];
+
+const groupDescriptions: Record<SkillGroup, string> = {
+  "work-main": "実務の開発工程(設計・実装・テスト)で使用してきた技術です。",
+  "work-used": "実務の調査・運用・環境利用の範囲で利用した経験のある技術です。",
+  personal: "個人開発で使用している技術です。実務経験とは区別しています。",
+};
 
 export default function SkillsPage() {
   return (
@@ -28,37 +23,47 @@ export default function SkillsPage() {
       <SectionTitle
         label="Skills"
         title="技術スキル"
-        description="星やパーセントではなく、各技術をどの用途で使っているかを短く整理しています。"
+        description="星やパーセントではなく、各技術をどの用途で使っているかを、実務と個人開発に分けて整理しています。"
       />
-      <dl className="mt-6 grid gap-2 rounded-lg border border-white/10 bg-surface-850 p-4 text-sm sm:grid-cols-3">
-        <LegendItem term="実務経験あり" description="実務の設計・実装・テストで使用" />
-        <LegendItem term="実務で利用" description="実務の調査・運用・開発支援で利用" />
-        <LegendItem term="個人開発で使用" description="個人開発で使用" />
-      </dl>
       <div className="mt-10 grid gap-10">
-        {categories.map((category) => {
-          const categorySkills = skills.filter((skill) => skill.category === category);
+        {groups.map((group) => {
+          const groupSkills = skills.filter((skill) => skill.group === group);
           return (
-            <section key={category}>
-              <h2 className="text-2xl font-bold text-white">{category}</h2>
-              <div className="mt-5 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                {categorySkills.map((skill) => (
-                  <SkillCard key={skill.name} skill={skill} />
-                ))}
+            <section key={group}>
+              <h2 className="text-2xl font-bold text-white">{skillGroupLabels[group]}</h2>
+              <p className="mt-2 text-sm text-zinc-400">{groupDescriptions[group]}</p>
+              <div className="mt-5 overflow-hidden rounded-lg border border-white/10 bg-surface-850">
+                <dl>
+                  {groupSkills.map((skill, index) => (
+                    <div
+                      key={skill.name}
+                      className={`grid gap-1 px-5 py-3.5 sm:grid-cols-[11rem_1fr] sm:gap-4 ${
+                        index > 0 ? "border-t border-white/[0.06]" : ""
+                      }`}
+                    >
+                      <dt className="font-semibold text-white">{skill.name}</dt>
+                      <dd className="text-sm leading-6 text-zinc-300 sm:self-center">{skill.usage}</dd>
+                    </div>
+                  ))}
+                </dl>
               </div>
             </section>
           );
         })}
+        <section>
+          <h2 className="text-2xl font-bold text-white">{aiSkill.title}</h2>
+          <div className="mt-5 rounded-lg border border-white/10 bg-surface-850 p-6">
+            <p className="leading-7 text-zinc-300">{aiSkill.description}</p>
+            <ul className="mt-4 flex flex-wrap gap-2">
+              {aiSkill.tools.map((tool) => (
+                <li key={tool} className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs text-zinc-300">
+                  {tool}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
       </div>
     </section>
-  );
-}
-
-function LegendItem({ term, description }: { term: string; description: string }) {
-  return (
-    <div className="flex flex-wrap items-center gap-2">
-      <dt className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs text-zinc-300">{term}</dt>
-      <dd className="text-zinc-400">{description}</dd>
-    </div>
   );
 }

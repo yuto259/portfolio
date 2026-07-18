@@ -6,9 +6,15 @@ import type { FocusArea } from "@/types/content";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "Yutoのプロフィール、職務要約、強み、AIを活用した開発、個人開発への取り組みを掲載しています。",
+  description: "Yutoのプロフィール、エンジニアとして大切にしていること、経験領域、AI活用に対する考え方を掲載しています。",
   alternates: { canonical: "/about" },
 };
+
+const aiWorkflow = [
+  { step: "コンテキスト共有", detail: "目的、条件、既存仕様、関連コードをAIへ共有する" },
+  { step: "実装・調査の依頼", detail: "小さな単位で実装や調査を依頼する" },
+  { step: "レビュー・テスト", detail: "出力を自身で確認し、テストと動作確認を行う" },
+];
 
 export default function AboutPage() {
   const name = getProfileName();
@@ -18,33 +24,49 @@ export default function AboutPage() {
       <SectionTitle
         label="About"
         title={`${name}について`}
-        description="システムエンジニアとしての経歴、大切にしていること、AIを活用した開発への取り組みを紹介します。"
+        description="システムエンジニアとしての経歴、大切にしていること、AI活用に対する考え方を紹介します。"
       />
       <section className="mt-10 grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
-        <div className="rounded-lg border border-white/10 bg-surface-850 p-6">
-          <Image
-            src={profile.profileImage}
-            alt={profile.profileImageAlt}
-            width={800}
-            height={800}
-            className="aspect-square w-full rounded-md object-cover"
-          />
-          <dl className="mt-6 grid gap-4 text-sm">
-            <Info term="表示名" description={name} />
+        <div className="h-fit rounded-lg border border-white/10 bg-surface-850 p-6">
+          <div className="flex items-center gap-4">
+            <Image
+              src={profile.profileImage}
+              alt={profile.profileImageAlt}
+              width={96}
+              height={96}
+              className="h-20 w-20 rounded-full object-cover"
+            />
+            <div>
+              <p className="text-lg font-bold text-white">{name}</p>
+              <p className="mt-1 text-sm text-zinc-400">{profile.location}</p>
+            </div>
+          </div>
+          <dl className="mt-6 grid gap-4 border-t border-white/10 pt-6 text-sm">
             <Info term="職種" description={profile.jobTitle} />
-            <Info term="活動" description="AIを活用したゲーム題材の個人開発" />
+            <Info term="実務経験" description="約4年半" />
+            <Info term="個人開発" description="Webゲーム「Monster League」を制作中" />
             {profile.showStudioName ? <Info term="活動名" description={profile.studioName} /> : null}
-            <Info term="経験領域" description={profile.focusAreas.map((area) => area.title).join("、")} />
           </dl>
         </div>
         <div className="grid gap-8">
           <ProfileSection title="自己紹介" paragraphs={[profile.shortBio]} />
-          <ProfileSection title="職務要約" paragraphs={[profile.careerSummary]} />
           <ProfileSection title="エンジニアとして大切にしていること" list={profile.values} />
           <FocusAreaSection title="経験領域" areas={profile.focusAreas} />
-          <ProfileSection title="AIを活用した開発" paragraphs={[profile.aiDevelopment]} />
-          <ProfileSection title="個人開発を行う理由" paragraphs={[profile.whyBuildIndie]} />
-          <ProfileSection title="今後取り組みたいこと" list={profile.futureGoals} />
+          <section className="rounded-lg border border-white/10 bg-surface-850 p-6">
+            <h2 className="text-2xl font-bold text-white">AI活用に対する考え方</h2>
+            <p className="mt-4 leading-8 text-zinc-300">{profile.aiDevelopment}</p>
+            <ol className="mt-6 grid gap-3 sm:grid-cols-3">
+              {aiWorkflow.map((item, index) => (
+                <li key={item.step} className="rounded-md border border-white/10 bg-white/[0.03] p-4">
+                  <p className="text-xs font-semibold text-accent-300">STEP {index + 1}</p>
+                  <p className="mt-2 font-semibold text-white">{item.step}</p>
+                  <p className="mt-2 text-sm leading-6 text-zinc-300">{item.detail}</p>
+                </li>
+              ))}
+            </ol>
+          </section>
+          <ProfileSection title="現在強化していること" paragraphs={[profile.whyBuildIndie]} />
+          <ProfileSection title="今後目指している方向" list={profile.futureGoals} />
         </div>
       </section>
     </div>

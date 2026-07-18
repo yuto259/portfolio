@@ -7,7 +7,7 @@ const resolveBaseUrl = (): string => {
   if (process.env.VERCEL_PROJECT_PRODUCTION_URL) {
     return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`;
   }
-  return "http://localhost:3000";
+  return "https://portfolio-tau-rust-42.vercel.app";
 };
 
 export const siteConfig: SiteConfig = {

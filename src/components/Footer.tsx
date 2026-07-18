@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ExternalLink } from "@/components/ExternalLink";
 import { getProfileName, profile } from "@/data/profile";
+import { shouldShowProjects } from "@/data/projects";
 import { siteConfig } from "@/data/site";
 import { socialLinks } from "@/data/socialLinks";
 
@@ -20,10 +21,15 @@ export function Footer() {
           ) : null}
         </div>
         <div className="flex flex-col gap-3 text-sm sm:items-end">
-          <Link className="text-zinc-300 transition hover:text-accent-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-300" href="/contact">
-            Contact
-          </Link>
-          <div className="flex flex-wrap gap-3 sm:justify-end">
+          <div className="flex flex-wrap gap-4 sm:justify-end">
+            <Link className="text-zinc-300 transition hover:text-accent-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-300" href="/experience">
+              Experience
+            </Link>
+            {shouldShowProjects ? (
+              <Link className="text-zinc-300 transition hover:text-accent-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-300" href="/projects">
+                Projects
+              </Link>
+            ) : null}
             {enabledLinks.map((link) => (
               <ExternalLink key={link.label} href={link.href} className="text-zinc-300 transition hover:text-accent-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-300">
                 {link.label}

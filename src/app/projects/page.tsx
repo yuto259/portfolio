@@ -1,9 +1,10 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { EmptyState } from "@/components/EmptyState";
 import { ProjectCard } from "@/components/ProjectCard";
 import { SectionTitle } from "@/components/SectionTitle";
-import { projects } from "@/data/projects";
+import { projects, shouldShowProjects } from "@/data/projects";
 import type { ProjectKind, ProjectStatus } from "@/types/content";
 
 export const metadata: Metadata = {
@@ -23,6 +24,10 @@ type ProjectsPageProps = {
 };
 
 export default async function ProjectsPage({ searchParams }: ProjectsPageProps) {
+  if (!shouldShowProjects) {
+    notFound();
+  }
+
   const params = await searchParams;
   const status = statuses.find((item) => item === params?.status);
   const kind = kinds.find((item) => item === params?.kind);

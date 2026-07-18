@@ -2,14 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { shouldShowProjects } from "@/data/projects";
 
 export const navItems = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/experience", label: "Experience" },
   { href: "/skills", label: "Skills" },
-  { href: "/projects", label: "Projects" },
-  { href: "/contact", label: "Contact" },
+  ...(shouldShowProjects ? [{ href: "/projects", label: "Projects" }] : []),
 ] as const;
 
 type NavigationProps = {

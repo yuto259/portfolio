@@ -6,16 +6,18 @@ import type { Project } from "@/types/content";
 export function ProjectCard({ project }: { project: Project }) {
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-lg border border-white/10 bg-surface-850 shadow-sm transition duration-200 hover:-translate-y-1 hover:border-accent-400/40 hover:shadow-glow motion-reduce:hover:translate-y-0">
-      <div className="aspect-[16/10] overflow-hidden bg-surface-800">
-        <Image
-          src={project.thumbnail}
-          alt={project.imageAlt}
-          width={1200}
-          height={750}
-          sizes="(min-width: 768px) 50vw, 100vw"
-          className="h-full w-full object-cover transition duration-300 group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
-        />
-      </div>
+      {project.thumbnail ? (
+        <div className="aspect-[16/10] overflow-hidden bg-surface-800">
+          <Image
+            src={project.thumbnail}
+            alt={project.imageAlt ?? `${project.title}のゲーム画面`}
+            width={1200}
+            height={750}
+            sizes="(min-width: 768px) 50vw, 100vw"
+            className="h-full w-full object-cover transition duration-300 group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+          />
+        </div>
+      ) : null}
       <div className="flex flex-1 flex-col p-5">
         <div className="flex flex-wrap items-center gap-2">
           <StatusBadge status={project.status} />
